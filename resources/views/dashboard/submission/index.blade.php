@@ -25,7 +25,7 @@
     <h1 class="h2">Daftar Pengajuan</h1>
     </div> 
     <table class="table table-striped ">
-        <thead  style="background-color: #b4bace"s>
+        <thead  style="background-color: #b4bace">
           <tr>
             <th scope="col">No</th>
             <th scope="col">Nama</th>
