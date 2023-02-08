@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Submission;
 use RealRashid\SweetAlert\Facades\Alert;
+
 class SubmissionController extends Controller
 {
     /**
@@ -13,17 +14,17 @@ class SubmissionController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //index for admin
-     public function indexs()
-     {
-        return view('dashboard.submission.indexs',[
+    //index for admin
+    public function indexs()
+    {
+        return view('dashboard.submission.indexs', [
             'submissions' => Submission::all()
         ]);
-     }
+    }
 
     public function index()
     {
-        return view('dashboard.submission.index',[
+        return view('dashboard.submission.index', [
             'submissions' => Submission::where('user_id', auth()->user()->id)->get(),
 
         ]);
@@ -37,7 +38,7 @@ class SubmissionController extends Controller
     public function create()
     {
         $submission = Submission::all();
-        return view('dashboard.submission.create',[
+        return view('dashboard.submission.create', [
             'submission' => $submission
         ]);
     }
@@ -70,9 +71,9 @@ class SubmissionController extends Controller
      */
     public function show(Submission $submission)
     {
-         return view('dashboard.submission.show',[
+        return view('dashboard.submission.show', [
             'submission' => $submission
-         ]);
+        ]);
     }
 
     /**
@@ -83,9 +84,9 @@ class SubmissionController extends Controller
      */
     public function edit(Submission $submission)
     {
-        return view('dashboard.submission.edit',[
+        return view('dashboard.submission.edit', [
             'submission' => $submission
-         ]);
+        ]);
     }
 
     /**
@@ -118,10 +119,10 @@ class SubmissionController extends Controller
     public function destroy($id)
     {
         Submission::destroy($id);
-        if(auth()->guard('user')->user()){
-        return redirect('/dashboard/submission')->with('delete  ', 'Data Berhasil Dihapus');
-        }elseif(auth()->guard('admin')){
-        return redirect('/dashboard/submissions')->with('delete', 'Data Berhasil Dihapus'); 
+        if (auth()->guard('user')->user()) {
+            return redirect('/dashboard/submission')->with('delete  ', 'Data Berhasil Dihapus');
+        } elseif (auth()->guard('admin')) {
+            return redirect('/dashboard/submissions')->with('delete', 'Data Berhasil Dihapus');
         }
     }
 }
